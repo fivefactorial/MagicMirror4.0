@@ -1,11 +1,10 @@
 package se.fivefactorial.magicmirror.ui
 
-import java.awt.Dimension
-import java.awt.GraphicsEnvironment
-import java.awt.Toolkit
+import java.awt.*
 import java.awt.event.WindowEvent
 import java.awt.event.WindowListener
 import javax.swing.JFrame
+import javax.swing.JPanel
 import javax.swing.SwingUtilities
 
 /**
@@ -14,7 +13,11 @@ import javax.swing.SwingUtilities
  * @param title the Title of the frame, displayed when not in fullscreen. Default, no text
  * @param onClose a callback method that is run when the window is closed. Default, do nothing
  */
-class MirrorUI(private val title: String? = null, private val onClose: () -> Any = {}) {
+class MirrorUI(
+    private val title: String? = null,
+    private val settings: UISettings = DefaultSettings,
+    private val onClose: () -> Any = {}
+) {
 
     private val ui: JFrame = JFrame(title).apply {
         val screenSize: Dimension = Toolkit.getDefaultToolkit().screenSize
@@ -36,11 +39,20 @@ class MirrorUI(private val title: String? = null, private val onClose: () -> Any
         defaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE
     }
 
+    private val panel: JPanel = JPanel().apply {
+        layout = BorderLayout()
+        background = settings.background
+    }
+
     var visible: Boolean
         get() = ui.isVisible
         set(value) {
             ui.isVisible = value
         }
+
+    init {
+        ui.add(panel, BorderLayout.CENTER)
+    }
 
     fun setFullscreen() = SwingUtilities.invokeLater {
         ui.dispose()
