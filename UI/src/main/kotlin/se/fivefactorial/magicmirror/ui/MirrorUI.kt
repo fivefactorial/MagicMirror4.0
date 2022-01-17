@@ -1,5 +1,7 @@
 package se.fivefactorial.magicmirror.ui
 
+import se.fivefactorial.magicmirror.ui.screen.Screen
+import se.fivefactorial.magicmirror.ui.settings.DefaultSettings
 import java.awt.*
 import java.awt.event.WindowEvent
 import java.awt.event.WindowListener
@@ -34,7 +36,6 @@ class MirrorUI(
             override fun windowDeiconified(e: WindowEvent?) {}
             override fun windowActivated(e: WindowEvent?) {}
             override fun windowDeactivated(e: WindowEvent?) {}
-
         })
         defaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE
     }
@@ -43,6 +44,8 @@ class MirrorUI(
         layout = BorderLayout()
         background = settings.background
     }
+
+    private var currentScreen: Screen? = null
 
     var visible: Boolean
         get() = ui.isVisible
@@ -62,8 +65,21 @@ class MirrorUI(
         ui.isVisible = true
     }
 
+    fun show(screen: Screen) {
+        currentScreen?.stop()
+        screen.setup(settings)
+        panel.apply {
+            removeAll()
+            add(screen.component)
+            updateUI()
+        }
+        screen.start()
+        currentScreen = screen
+    }
+
     fun stop() = SwingUtilities.invokeLater {
         visible = false
+        currentScreen?.stop()
         ui.dispose()
         onClose()
     }
