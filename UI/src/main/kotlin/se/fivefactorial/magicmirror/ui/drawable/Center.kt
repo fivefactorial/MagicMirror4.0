@@ -25,14 +25,14 @@ class Center(private val child: Drawable) : Drawable() {
     override fun draw(g: Graphics2D) {
         child.draw(g)
 
-        if (!settings.debug) return
-        val size = 20;
-        g.color = settings.debugColor
-        child.bounds.let {
-            g.fillArc(it.x - size / 2, it.y + it.height / 2 - size / 2, size, size, 90, 180)
-            g.fillArc(it.x + it.width / 2 - size / 2, it.y - size / 2, size, size, 0, 180)
-            g.fillArc(it.x + it.width - size / 2 - 1, it.y + it.height / 2 - size / 2, size, size, 270, 180)
-            g.fillArc(it.x + it.width / 2 - size / 2, it.y + it.height - 1 - size / 2, size, size, 180, 180)
+        g.debug {
+            val size = 20;
+            child.bounds.let {
+                fillArc(it.x - size / 2, it.y + it.height / 2 - size / 2, size, size, 90, 180)
+                fillArc(it.x + it.width / 2 - size / 2, it.y - size / 2, size, size, 0, 180)
+                fillArc(it.x + it.width - size / 2 - 1, it.y + it.height / 2 - size / 2, size, size, 270, 180)
+                fillArc(it.x + it.width / 2 - size / 2, it.y + it.height - 1 - size / 2, size, size, 180, 180)
+            }
         }
     }
 

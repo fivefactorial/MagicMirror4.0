@@ -42,5 +42,16 @@ abstract class Drawable {
         drawRect(rectangle.x, rectangle.y, rectangle.width - 1, rectangle.height - 1)
     }
 
+    protected fun Graphics2D.debug(block: Graphics2D.() -> Unit) {
+        if (settings.debug) {
+            val oldColor = color
+            val oldStroke = stroke
+            color = settings.debugColor
+            block()
+            color = oldColor
+            stroke = oldStroke
+        }
+    }
+
 
 }

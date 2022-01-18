@@ -1,6 +1,5 @@
 package se.fivefactorial.magicmirror.ui.drawable
 
-import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.drawable.settings.TextSettings
 import java.awt.Canvas
 import java.awt.Dimension
@@ -24,8 +23,8 @@ class Text internal constructor(
         g.font = textSettings.font ?: settings.defaultTextFont
         g.drawString(text(), bounds.x, bounds.y + g.fontMetrics.ascent)
 
-        if (!settings.debug) return
-        g.color = settings.debugColor
-        g.drawRect(bounds)
+        g.debug {
+            drawRect(bounds)
+        }
     }
 }

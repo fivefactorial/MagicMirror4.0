@@ -1,6 +1,5 @@
 package se.fivefactorial.magicmirror.ui.drawable
 
-import se.fivefactorial.magicmirror.ui.UISettings
 import java.awt.Dimension
 import java.awt.Graphics2D
 import java.awt.Rectangle
