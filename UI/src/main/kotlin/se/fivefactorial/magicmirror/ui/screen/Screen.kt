@@ -1,5 +1,6 @@
 package se.fivefactorial.magicmirror.ui.screen
 
+import se.fivefactorial.magicmirror.ui.MirrorUI
 import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.drawable.Group
 import se.fivefactorial.magicmirror.ui.drawable.Drawable
@@ -10,7 +11,8 @@ import javax.swing.Timer
 
 abstract class Screen {
 
-    private lateinit var settings: UISettings
+    internal lateinit var settings: UISettings
+    internal lateinit var ui: MirrorUI
 
     private val timer by lazy { Timer(1000 / settings.fps) { component.repaint() } }
 
@@ -33,11 +35,24 @@ abstract class Screen {
 
     fun add(drawable: Drawable) = group.add(drawable)
 
-    internal fun setup(settings: UISettings) {
-        this.settings = settings
+    internal fun start() {
+        setup()
+        timer.start()
+        object : Thread() {
+            override fun run() {
+                name = this@Screen::class.java.simpleName
+                try {
+                    this@Screen.run()
+                } catch (e: Throwable) {
+                    ui.show(ErrorScreen(e))
+                }
+            }
+        }.start()
     }
 
-    internal fun start() = timer.start()
     internal fun stop() = timer.stop()
+
+    abstract fun setup()
+    abstract fun run()
 
 }

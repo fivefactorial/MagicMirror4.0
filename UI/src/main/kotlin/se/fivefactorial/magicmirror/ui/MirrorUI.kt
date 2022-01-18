@@ -65,9 +65,10 @@ class MirrorUI(
         ui.isVisible = true
     }
 
-    fun show(screen: Screen) {
+    fun show(screen: Screen) = SwingUtilities.invokeLater() {
         currentScreen?.stop()
-        screen.setup(settings)
+        screen.settings = settings
+        screen.ui = this
         panel.apply {
             removeAll()
             add(screen.component)
