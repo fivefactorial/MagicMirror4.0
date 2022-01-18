@@ -1,6 +1,7 @@
 package se.fivefactorial.magicmirror.ui
 
 import java.awt.Color
+import java.awt.Font
 
 interface UISettings {
     val background: Color
@@ -8,5 +9,6 @@ interface UISettings {
     val debugColor: Color
     var debug: Boolean
     val fps: Int
+    val defaultTextFont: Font
 }
 

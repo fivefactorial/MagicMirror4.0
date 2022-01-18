@@ -5,7 +5,7 @@ import java.awt.Dimension
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
-class Container(vararg children: Drawable) : Drawable() {
+class Container internal constructor(vararg children: Drawable) : Drawable() {
 
     private val children: MutableList<Drawable> = children.toMutableList<Drawable>()
 
@@ -15,9 +15,9 @@ class Container(vararg children: Drawable) : Drawable() {
             field = value
         }
 
-    override fun getPreferredSize(): Dimension {
-        val width: Int = children.map { it.getPreferredSize().width }.maxOrNull() ?: 0
-        val height: Int = children.map { it.getPreferredSize().height }.maxOrNull() ?: 0
+    override fun getPreferredSize(settings: UISettings): Dimension {
+        val width: Int = children.maxOfOrNull { it.getPreferredSize(settings).width } ?: 0
+        val height: Int = children.maxOfOrNull { it.getPreferredSize(settings).height } ?: 0
         return Dimension(width, height)
     }
 
@@ -30,5 +30,3 @@ class Container(vararg children: Drawable) : Drawable() {
     }
 
 }
-
-fun container(vararg children: Drawable) = Container(*children)

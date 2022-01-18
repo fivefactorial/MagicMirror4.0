@@ -19,7 +19,7 @@ abstract class Drawable {
     /**
      * Returns the preferred size of the drawable.
      */
-    internal abstract fun getPreferredSize(): Dimension
+    internal abstract fun getPreferredSize(settings: UISettings): Dimension
 
     /**
      * Draws the drawable on the Graphics2D object.

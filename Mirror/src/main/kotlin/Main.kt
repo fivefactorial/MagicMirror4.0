@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     val ui = MirrorUI(settings = settings) {
         println("A message to show that the application was terminated correctly")
     }.apply {
-        show(ExampleScreen().apply { add(text()) })
+        show(ExampleScreen().apply { add(text() {"${System.currentTimeMillis()}"}) })
         visible = true
     }
 
