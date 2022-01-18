@@ -7,4 +7,4 @@ fun text(
     text: () -> String
 ): Text = Text(textSettings, text)
 
-fun container(vararg children: Drawable) = Container(*children)
+fun container(vararg children: Drawable) = Group(*children)

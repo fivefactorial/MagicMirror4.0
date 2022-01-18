@@ -10,6 +10,8 @@ import java.awt.Rectangle
  */
 abstract class Drawable {
 
+    protected lateinit var settings: UISettings
+
     /**
      * The valid bounds where they drawable exists. Set by a parent
      * and should be overwritten by all container implementations.
@@ -19,12 +21,19 @@ abstract class Drawable {
     /**
      * Returns the preferred size of the drawable.
      */
-    internal abstract fun getPreferredSize(settings: UISettings): Dimension
+    internal abstract fun getPreferredSize(): Dimension
 
     /**
      * Draws the drawable on the Graphics2D object.
      */
-    internal abstract fun draw(g: Graphics2D, settings: UISettings)
+    internal abstract fun draw(g: Graphics2D)
+
+    /**
+     * Implemented in each subclass to propagate the settings variable.
+     */
+    internal open fun setup(settings: UISettings) {
+        this.settings = settings
+    }
 
     /**
      * Draws a rectangle around the given rectangle bounds
@@ -32,4 +41,6 @@ abstract class Drawable {
     protected fun Graphics2D.drawRect(rectangle: Rectangle) {
         drawRect(rectangle.x, rectangle.y, rectangle.width - 1, rectangle.height - 1)
     }
+
+
 }
