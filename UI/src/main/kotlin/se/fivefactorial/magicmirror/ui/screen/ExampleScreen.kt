@@ -1,20 +1,28 @@
 package se.fivefactorial.magicmirror.ui.screen
 
 import se.fivefactorial.magicmirror.ui.drawable.center
+import se.fivefactorial.magicmirror.ui.drawable.circularSpinner
+import se.fivefactorial.magicmirror.ui.drawable.stack
 import se.fivefactorial.magicmirror.ui.drawable.text
 
 class ExampleScreen : Screen() {
 
     override fun setup() {
-        println("Setup!")
         val start = System.currentTimeMillis()
-        add(center(text() { "${System.currentTimeMillis() - start}ms" }))
+
+        val stack = stack()
+        stack.add(text() { "${System.currentTimeMillis() - start}ms" })
+        stack.add(circularSpinner(10))
+        stack.add(circularSpinner(15))
+        stack.add(circularSpinner(20))
+
+        add(circularSpinner(45))
+        add(center(stack))
+
     }
 
     override fun run() {
         println("Running")
-        Thread.sleep(5000)
-        throw IllegalArgumentException("Whoopsie!")
     }
 
 }

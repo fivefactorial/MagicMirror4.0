@@ -1,20 +1,22 @@
 package se.fivefactorial.magicmirror.ui.drawable
 
 import se.fivefactorial.magicmirror.ui.UISettings
+import se.fivefactorial.magicmirror.ui.drawable.settings.PositionSettings
 import se.fivefactorial.magicmirror.ui.drawable.settings.SizeSettings
 import java.awt.BasicStroke
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
-class AbsoluteSize internal constructor(
+class Absolute internal constructor(
     private val child: Drawable,
+    private val positionSettings: PositionSettings,
     private val sizeSettings: SizeSettings
 ) : Drawable() {
 
-    override var bounds: Rectangle = Rectangle()
-        set(value) {
-            child.bounds = value
-            field = value
+    @Suppress("SetterBackingFieldAssignment")
+    override var bounds: Rectangle = Rectangle(positionSettings.toPoint(), sizeSettings.toDimension())
+        set(_) {
+            child.bounds = field
         }
 
     override fun getPreferredSize() = sizeSettings.toDimension()

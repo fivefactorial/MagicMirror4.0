@@ -23,8 +23,6 @@ class Stack internal constructor(vararg children: Drawable) : Container(children
 
     override fun draw(g: Graphics2D) {
         children.forEach { it.draw(g) }
-        if (!settings.debug) return
-        g.color = settings.debugColor
-        children.forEach { g.drawRect(it.bounds.x, it.bounds.y, it.bounds.width - 1, it.bounds.height - 1) }
+        g.debug { children.forEach { drawable -> drawRect(drawable.bounds) } }
     }
 }

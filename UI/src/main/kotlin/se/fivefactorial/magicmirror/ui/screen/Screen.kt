@@ -12,7 +12,7 @@ import javax.swing.Timer
 abstract class Screen {
 
     internal lateinit var settings: UISettings
-    internal lateinit var ui: MirrorUI
+    lateinit var ui: MirrorUI
 
     private val timer by lazy { Timer(1000 / settings.fps) { component.repaint() } }
 
