@@ -11,7 +11,6 @@ import javax.swing.Timer
 fun main(args: Array<String>) {
 
     val settings = if (args.toList().contains("develop")) DevelopmentSettings else DefaultSettings
-    settings.debug = true
 
     MirrorUI(settings.title, settings) {
         println("A message to show that the application was terminated correctly")
