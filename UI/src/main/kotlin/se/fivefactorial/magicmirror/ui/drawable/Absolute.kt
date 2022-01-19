@@ -16,7 +16,7 @@ class Absolute internal constructor(
     @Suppress("SetterBackingFieldAssignment")
     override var bounds: Rectangle = Rectangle(positionSettings.toPoint(), sizeSettings.toDimension())
         set(_) {
-            child.bounds = field
+            child.bounds = Rectangle(positionSettings.toPoint(), sizeSettings.toDimension())
         }
 
     override fun getPreferredSize() = sizeSettings.toDimension()
@@ -32,5 +32,10 @@ class Absolute internal constructor(
     override fun setup(settings: UISettings) {
         super.setup(settings)
         child.setup(settings)
+    }
+
+    override fun toString(spacing: String): String {
+        val newSpacing = "$spacing  "
+        return "${super.toString(spacing)}\n$newSpacing${child.toString(newSpacing)}"
     }
 }

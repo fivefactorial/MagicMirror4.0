@@ -24,3 +24,5 @@ fun absolute(child: Drawable, positionSettings: PositionSettings, sizeSettings: 
 fun stack(vararg children: Drawable) = Stack(*children)
 
 fun circularSpinner(size: Int = 50) = CircularSpinner(size)
+
+fun group() = Group()

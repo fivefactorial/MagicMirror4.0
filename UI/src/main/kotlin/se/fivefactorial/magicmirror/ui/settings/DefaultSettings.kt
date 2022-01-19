@@ -11,4 +11,5 @@ object DefaultSettings : UISettings {
     override var debug: Boolean = false
     override val fps: Int = 30
     override val defaultTextFont: Font = Font("Verdana", Font.PLAIN, 25)
+    override val title: String = "Magic Mirror"
 }

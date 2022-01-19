@@ -26,4 +26,5 @@ class Group internal constructor(vararg children: Drawable) : Container(
     override fun draw(g: Graphics2D) {
         children.forEach { it.draw(g) }
     }
+
 }

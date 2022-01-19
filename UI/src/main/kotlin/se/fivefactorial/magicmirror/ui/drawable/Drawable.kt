@@ -53,4 +53,10 @@ abstract class Drawable {
         }
     }
 
+    override fun toString() = toString("")
+
+    open fun toString(spacing: String): String {
+        return "$spacing${this::class.java.simpleName}"
+    }
+
 }

@@ -1,3 +1,4 @@
+import se.fivefactorial.magicmirror.mirror.screen.LoadingScreen
 import se.fivefactorial.magicmirror.ui.MirrorUI
 import se.fivefactorial.magicmirror.ui.drawable.Text
 import se.fivefactorial.magicmirror.ui.drawable.center
@@ -10,24 +11,12 @@ import javax.swing.Timer
 fun main(args: Array<String>) {
 
     val settings = if (args.toList().contains("develop")) DevelopmentSettings else DefaultSettings
+    settings.debug = true
 
-    val timer = Timer(1200) {
-        settings.debug = !settings.debug }
-    timer.start()
-    val ui = MirrorUI(settings = settings) {
-        timer.stop()
+    MirrorUI(settings.title, settings) {
         println("A message to show that the application was terminated correctly")
     }.apply {
-        show(ExampleScreen())
+        show(LoadingScreen())
         visible = true
     }
-
-    /*
-    Thread.sleep(5000)
-    ui.setFullscreen()
-    Thread.sleep(5000)
-    ui.stop()
-    */
-
-
 }

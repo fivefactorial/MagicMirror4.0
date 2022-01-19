@@ -14,4 +14,13 @@ abstract class Container(
     fun add(drawable: Drawable) {
         children.add(drawable)
     }
+
+    override fun toString(spacing: String): String {
+        val newSpacing = "$spacing  "
+        val title = super.toString(spacing)
+        return if (children.isEmpty())
+            "$title (Empty)"
+        else
+            title + children.joinToString("") { child -> "\n$newSpacing${child.toString(newSpacing)}" }
+    }
 }

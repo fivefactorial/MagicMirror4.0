@@ -40,4 +40,9 @@ class Center(private val child: Drawable) : Drawable() {
         super.setup(settings)
         child.setup(settings)
     }
+
+    override fun toString(spacing: String): String {
+        val newSpacing = "$spacing  "
+        return "${super.toString(spacing)}\n$newSpacing${child.toString(newSpacing)}"
+    }
 }

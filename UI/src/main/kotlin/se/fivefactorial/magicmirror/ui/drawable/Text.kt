@@ -27,4 +27,8 @@ class Text internal constructor(
             drawRect(bounds)
         }
     }
+
+    override fun toString(spacing: String): String {
+        return "${super.toString(spacing)} (${text()})"
+    }
 }

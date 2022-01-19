@@ -10,5 +10,6 @@ interface UISettings {
     var debug: Boolean
     val fps: Int
     val defaultTextFont: Font
+    val title: String
 }
 
