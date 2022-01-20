@@ -1,12 +1,7 @@
-import se.fivefactorial.magicmirror.mirror.screen.LoadingScreen
+import se.fivefactorial.magicmirror.mirror.screen.loading.LoadingScreen
 import se.fivefactorial.magicmirror.ui.MirrorUI
-import se.fivefactorial.magicmirror.ui.drawable.Text
-import se.fivefactorial.magicmirror.ui.drawable.center
-import se.fivefactorial.magicmirror.ui.drawable.text
-import se.fivefactorial.magicmirror.ui.screen.ExampleScreen
 import se.fivefactorial.magicmirror.ui.settings.DefaultSettings
 import se.fivefactorial.magicmirror.ui.settings.DevelopmentSettings
-import javax.swing.Timer
 
 fun main(args: Array<String>) {
 
