@@ -1,6 +1,7 @@
-package se.fivefactorial.magicmirror.modules.clock
+package se.fivefactorial.magicmirror.mirror.component.clock
 
 import se.fivefactorial.magicmirror.mirror.component.Component
+import se.fivefactorial.magicmirror.mirror.component.clock.ClockSettings
 import se.fivefactorial.magicmirror.ui.drawable.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

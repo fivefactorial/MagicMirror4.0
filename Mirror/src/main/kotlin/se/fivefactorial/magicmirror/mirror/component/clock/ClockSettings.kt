@@ -1,4 +1,4 @@
-package se.fivefactorial.magicmirror.modules.clock
+package se.fivefactorial.magicmirror.mirror.component.clock
 
 import se.fivefactorial.magicmirror.mirror.component.ComponentSettings
 import se.fivefactorial.magicmirror.ui.drawable.settings.PositionSettings

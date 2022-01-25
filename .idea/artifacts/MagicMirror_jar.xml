@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="MagicMirror:jar">
+  <artifact type="jar" build-on-make="true" name="MagicMirror:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/MagicMirror_jar</output-path>
     <root id="archive" name="MagicMirror.jar">
       <element id="directory" name="META-INF">
