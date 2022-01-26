@@ -18,7 +18,7 @@ class SettingsHandler {
         }
 
         val resource: URL = resourceFetcher(filename)
-            ?: throw SettingsException("Settings file not found")
+            ?: throw SettingsException("Settings file ($filename) not found")
 
         println(resource)
         val data: String = resource.readText(Charsets.ISO_8859_1)
