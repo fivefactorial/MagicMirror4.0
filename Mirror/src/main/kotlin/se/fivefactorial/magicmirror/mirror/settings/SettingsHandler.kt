@@ -5,12 +5,12 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import java.net.URL
 
-
 class SettingsHandler {
 
+    private val json by lazy { Json { ignoreUnknownKeys = true } }
 
     fun load(): MirrorSettings {
-
+        println(hasResourcesFolder())
         val resourceFetcher: (String) -> URL? = if (hasResourcesFolder()) {
             { urlFromResource(it) }
         } else {
@@ -20,9 +20,10 @@ class SettingsHandler {
         val resource: URL = resourceFetcher("settings.json")
             ?: throw SettingsException("Settings file not found")
 
+        println(resource)
         val data: String = resource.readText(Charsets.ISO_8859_1)
-        val settings = Json { ignoreUnknownKeys = true }.decodeFromString<MirrorSettings>(data)
-        return settings
+        println(data)
+        return json.decodeFromString<MirrorSettings>(data)
     }
 
     private fun urlFromResource(filename: String): URL? = this.javaClass.classLoader.getResource(filename)
