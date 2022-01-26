@@ -4,6 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MirrorSettings(
-    var test: String,
-    var test2: String = "no"
+    var name: String = "Magic Mirror"
 )

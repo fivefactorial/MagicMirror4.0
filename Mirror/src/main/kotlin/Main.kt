@@ -5,9 +5,10 @@ import se.fivefactorial.magicmirror.ui.settings.DefaultSettings
 import se.fivefactorial.magicmirror.ui.settings.DevelopmentSettings
 
 fun main(args: Array<String>) {
+    val filename = "settings.json"
 
     try {
-        val settingsHandler = SettingsHandler().apply { println(load()) }
+        val settingsHandler = SettingsHandler().apply { println(load(filename)) }
 
         if (args[0] != "leave") return
 

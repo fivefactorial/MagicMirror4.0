@@ -9,7 +9,7 @@ class SettingsHandler {
 
     private val json by lazy { Json { ignoreUnknownKeys = true } }
 
-    fun load(): MirrorSettings {
+    fun load(filename: String): MirrorSettings {
         println(hasResourcesFolder())
         val resourceFetcher: (String) -> URL? = if (hasResourcesFolder()) {
             { urlFromResource(it) }
@@ -17,13 +17,13 @@ class SettingsHandler {
             { urlFromPath(it) }
         }
 
-        val resource: URL = resourceFetcher("settings.json")
+        val resource: URL = resourceFetcher(filename)
             ?: throw SettingsException("Settings file not found")
 
         println(resource)
         val data: String = resource.readText(Charsets.ISO_8859_1)
         println(data)
-        return json.decodeFromString<MirrorSettings>(data)
+        return json.decodeFromString(data)
     }
 
     private fun urlFromResource(filename: String): URL? = this.javaClass.classLoader.getResource(filename)
