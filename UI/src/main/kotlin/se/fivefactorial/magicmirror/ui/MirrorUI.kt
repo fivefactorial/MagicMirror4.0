@@ -1,7 +1,6 @@
 package se.fivefactorial.magicmirror.ui
 
 import se.fivefactorial.magicmirror.ui.screen.Screen
-import se.fivefactorial.magicmirror.ui.settings.DefaultSettings
 import java.awt.*
 import java.awt.event.WindowEvent
 import java.awt.event.WindowListener
@@ -17,7 +16,7 @@ import javax.swing.SwingUtilities
  */
 class MirrorUI(
     private val title: String? = null,
-    private val settings: UISettings = DefaultSettings,
+    private val settings: UISettings,
     private val onClose: () -> Any = {}
 ) {
 

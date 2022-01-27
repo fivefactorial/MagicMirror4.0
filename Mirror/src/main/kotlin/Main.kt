@@ -4,8 +4,6 @@ import com.xenomachina.argparser.default
 import se.fivefactorial.magicmirror.mirror.screen.loading.LoadingScreen
 import se.fivefactorial.magicmirror.mirror.settings.SettingsHandler
 import se.fivefactorial.magicmirror.ui.MirrorUI
-import se.fivefactorial.magicmirror.ui.settings.DefaultSettings
-import se.fivefactorial.magicmirror.ui.settings.DevelopmentSettings
 
 fun main(args: Array<String>) {
 
@@ -18,13 +16,10 @@ fun main(args: Array<String>) {
         }
 
     try {
-        val settingsHandler = SettingsHandler().apply { println(load(arguments.settings)) }
+        val settingsHandler = SettingsHandler()
+        val settings = settingsHandler.load(arguments.settings)
 
-        if (arguments.noUI) return
-
-        val settings = if (arguments.develop) DevelopmentSettings else DefaultSettings
-
-        MirrorUI(settings.title, settings) {
+        MirrorUI(settings.name, settings.ui) {
             println("A message to show that the application was terminated correctly")
         }.apply {
             show(LoadingScreen())
@@ -39,9 +34,5 @@ fun main(args: Array<String>) {
 }
 
 class Arguments(parser: ArgParser) {
-    val develop by parser.flagging("-d", "--develop", help = "enable develop mode")
-    val noUI by parser.flagging("-0", help = "disable ui")
-
     val settings by parser.positional("settings filename").default("settings.json")
-
 }

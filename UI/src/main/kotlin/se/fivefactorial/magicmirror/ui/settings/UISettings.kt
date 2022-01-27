@@ -1,15 +1,20 @@
 package se.fivefactorial.magicmirror.ui
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import java.awt.Color
 import java.awt.Font
 
-interface UISettings {
-    val background: Color
-    val textColor: Color
-    val debugColor: Color
-    var debug: Boolean
-    val fps: Int
-    val defaultTextFont: Font
-    val title: String
-}
-
+@Serializable
+data class UISettings (
+    @Contextual
+    val background: Color = Color.BLACK,
+    @Contextual
+    val textColor: Color = Color.WHITE,
+    @Contextual
+    val debugColor: Color = Color.RED,
+    var debug: Boolean = false,
+    val fps: Int = 30,
+    @Contextual
+    val defaultTextFont: Font = Font("Verdana", Font.PLAIN, 25),
+)
