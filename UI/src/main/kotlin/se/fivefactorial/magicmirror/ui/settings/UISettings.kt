@@ -2,17 +2,18 @@ package se.fivefactorial.magicmirror.ui
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
+import se.fivefactorial.magicmirror.ui.settings.UIColor
 import java.awt.Color
 import java.awt.Font
 
 @Serializable
-data class UISettings (
+data class UISettings(
     @Contextual
-    val background: Color = Color.BLACK,
+    val background: UIColor = UIColor.BLACK,
     @Contextual
-    val textColor: Color = Color.WHITE,
+    val textColor: UIColor = UIColor.WHITE,
     @Contextual
-    val debugColor: Color = Color.RED,
+    val debugColor: UIColor = UIColor.RED,
     var debug: Boolean = false,
     val fps: Int = 30,
     @Contextual

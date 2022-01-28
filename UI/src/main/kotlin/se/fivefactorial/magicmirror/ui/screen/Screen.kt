@@ -21,7 +21,7 @@ abstract class Screen {
     val component by lazy {
         object : JPanel() {
             init {
-                background = settings.background
+                background = settings.background.toColor()
             }
 
             override fun paint(g: Graphics) {

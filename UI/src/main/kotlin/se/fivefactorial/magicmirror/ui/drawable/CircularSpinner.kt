@@ -11,7 +11,7 @@ class CircularSpinner(private val size: Int) : Drawable() {
     }
 
     override fun draw(g: Graphics2D) {
-        g.color = settings.textColor
+        g.uiColor = settings.textColor
         val size = min(bounds.width, bounds.height)
         val x = bounds.x + bounds.width / 2 - size / 2
         val y = bounds.y + bounds.height / 2 - size / 2
@@ -22,7 +22,7 @@ class CircularSpinner(private val size: Int) : Drawable() {
         val sizeSmall = (size * 0.85).toInt()
         val xSmall = bounds.x + bounds.width / 2 - sizeSmall / 2
         val ySmall = bounds.y + bounds.height / 2 - sizeSmall / 2
-        g.color = settings.background
+        g.uiColor = settings.background
         g.fillOval(xSmall, ySmall, sizeSmall, sizeSmall)
 
         g.debug {

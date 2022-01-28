@@ -41,7 +41,7 @@ class MirrorUI(
 
     private val panel: JPanel = JPanel().apply {
         layout = BorderLayout()
-        background = settings.background
+        background = settings.background.toColor()
     }
 
     private var currentScreen: Screen? = null

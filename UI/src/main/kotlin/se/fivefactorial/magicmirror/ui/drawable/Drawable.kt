@@ -1,6 +1,7 @@
 package se.fivefactorial.magicmirror.ui.drawable
 
 import se.fivefactorial.magicmirror.ui.UISettings
+import se.fivefactorial.magicmirror.ui.settings.UIColor
 import java.awt.Dimension
 import java.awt.Graphics2D
 import java.awt.Rectangle
@@ -46,12 +47,18 @@ abstract class Drawable {
         if (settings.debug) {
             val oldColor = color
             val oldStroke = stroke
-            color = settings.debugColor
+            uiColor = settings.debugColor
             block()
             color = oldColor
             stroke = oldStroke
         }
     }
+
+    protected var Graphics2D.uiColor: UIColor
+        get() = UIColor(color.rgb)
+        set(value) {
+            color = value.toColor()
+        }
 
     override fun toString() = toString("")
 

@@ -1,4 +1,6 @@
 {
-  "test": "foo bar",
-  "test3": "yes"
+  "name": "Magic Mirror Developer Mode",
+  "ui" : {
+    "background": "White"
+  }
 }

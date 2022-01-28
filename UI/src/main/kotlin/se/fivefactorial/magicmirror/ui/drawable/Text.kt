@@ -19,7 +19,7 @@ class Text internal constructor(
     }
 
     override fun draw(g: Graphics2D) {
-        g.color = settings.textColor
+        g.uiColor = settings.textColor
         g.font = textSettings.font ?: settings.defaultTextFont
         g.drawString(text(), bounds.x, bounds.y + g.fontMetrics.ascent)
 

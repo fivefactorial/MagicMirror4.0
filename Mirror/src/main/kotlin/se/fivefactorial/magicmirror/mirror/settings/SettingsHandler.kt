@@ -7,6 +7,8 @@ import java.net.URL
 
 class SettingsHandler {
 
+    private val textCharset = Charsets.ISO_8859_1
+
     private val json by lazy { Json { ignoreUnknownKeys = true } }
 
     /**
@@ -22,7 +24,7 @@ class SettingsHandler {
         val resource: URL = resourceFetcher(filename)
             ?: throw SettingsException("Settings file ($filename) not found")
 
-        val data: String = resource.readText(Charsets.ISO_8859_1)
+        val data: String = resource.readText(textCharset)
         return json.decodeFromString(data)
     }
 
