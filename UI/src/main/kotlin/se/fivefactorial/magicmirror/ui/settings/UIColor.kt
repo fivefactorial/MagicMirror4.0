@@ -11,5 +11,9 @@ class UIColor(private val rgb: Int) {
     }
 
     fun toColor() = Color(rgb)
+
+    override fun toString(): String {
+        return toColor().toString()
+    }
 }
 

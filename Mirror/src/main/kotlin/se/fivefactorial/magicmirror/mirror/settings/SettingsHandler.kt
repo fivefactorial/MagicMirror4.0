@@ -5,7 +5,7 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import java.net.URL
 
-class SettingsHandler {
+object SettingsHandler {
 
     private val textCharset = Charsets.ISO_8859_1
 

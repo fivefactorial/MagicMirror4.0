@@ -16,9 +16,8 @@ fun main(args: Array<String>) {
         }
 
     try {
-        val settingsHandler = SettingsHandler()
-        val settings = settingsHandler.load(arguments.settings)
-
+        val settings = SettingsHandler.load(arguments.settings)
+        println(settings)
         MirrorUI(settings.name, settings.ui) {
             println("A message to show that the application was terminated correctly")
         }.apply {

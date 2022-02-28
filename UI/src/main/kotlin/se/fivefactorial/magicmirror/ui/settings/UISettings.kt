@@ -2,6 +2,7 @@ package se.fivefactorial.magicmirror.ui
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
+import se.fivefactorial.magicmirror.ui.settings.Margins
 import se.fivefactorial.magicmirror.ui.settings.UIColor
 import java.awt.Color
 import java.awt.Font
@@ -18,4 +19,6 @@ data class UISettings(
     val fps: Int = 30,
     @Contextual
     val defaultTextFont: Font = Font("Verdana", Font.PLAIN, 25),
+
+    val margins: Margins? = null
 )
