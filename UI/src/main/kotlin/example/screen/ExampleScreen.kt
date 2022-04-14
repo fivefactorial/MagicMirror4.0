@@ -1,9 +1,10 @@
-package se.fivefactorial.magicmirror.ui.screen
+package example.screen
 
 import se.fivefactorial.magicmirror.ui.drawable.center
 import se.fivefactorial.magicmirror.ui.drawable.circularSpinner
 import se.fivefactorial.magicmirror.ui.drawable.stack
 import se.fivefactorial.magicmirror.ui.drawable.text
+import se.fivefactorial.magicmirror.ui.screen.Screen
 
 class ExampleScreen : Screen() {
 
