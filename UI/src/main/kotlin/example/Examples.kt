@@ -5,11 +5,12 @@ import se.fivefactorial.magicmirror.ui.MirrorUI
 import se.fivefactorial.magicmirror.ui.UISettings
 
 internal fun main() {
-    var settings = UISettings()
+    val settings = UISettings()
+    settings.debug = true
 
-    var screen = ExampleScreen()
+    val screen = ExampleScreen()
 
-    var ui = MirrorUI(settings = settings)
+    val ui = MirrorUI("Example", settings)
     ui.show(screen)
     ui.visible = true
 }

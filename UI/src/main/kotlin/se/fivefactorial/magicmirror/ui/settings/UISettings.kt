@@ -4,7 +4,6 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import se.fivefactorial.magicmirror.ui.settings.Margins
 import se.fivefactorial.magicmirror.ui.settings.UIColor
-import java.awt.Color
 import java.awt.Font
 
 @Serializable

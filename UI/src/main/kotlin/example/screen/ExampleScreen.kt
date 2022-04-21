@@ -6,7 +6,7 @@ import se.fivefactorial.magicmirror.ui.drawable.stack
 import se.fivefactorial.magicmirror.ui.drawable.text
 import se.fivefactorial.magicmirror.ui.screen.Screen
 
-class ExampleScreen : Screen() {
+internal class ExampleScreen : Screen() {
 
     override fun setup() {
         val start = System.currentTimeMillis()
