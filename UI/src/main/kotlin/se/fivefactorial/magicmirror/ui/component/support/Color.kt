@@ -7,5 +7,5 @@ data class Color(
     var red: Int,
     var green: Int,
     var blue: Int,
-    var alpha: Int,
+    var alpha: Int = 255,
 )

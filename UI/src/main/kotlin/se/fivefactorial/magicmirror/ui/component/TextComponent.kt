@@ -1,14 +1,17 @@
 package se.fivefactorial.magicmirror.ui.component
 
-import java.awt.Color
+import se.fivefactorial.magicmirror.ui.component.support.Color
 import java.awt.Graphics2D
 
-class TextComponent : Component() {
-    override fun draw(g: Graphics2D) {
-        g.color = Color.GREEN
-        g.drawLine(0, 0, size.width, size.height)
-        g.color = Color.BLACK
+class TextComponent(private val text: () -> String, private val color: Color? = null) : Component() {
 
-        g.drawString("" + System.currentTimeMillis(), 20, 20)
+    constructor (text: String, color: Color? = null) : this({ text }, color)
+
+    override fun draw(g: Graphics2D) {
+        color?.run {
+            g.setColor(this)
+        }
+
+        g.drawString(text(), 20, 20)
     }
 }

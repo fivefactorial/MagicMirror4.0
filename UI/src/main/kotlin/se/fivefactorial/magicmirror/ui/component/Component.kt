@@ -1,6 +1,7 @@
 package se.fivefactorial.magicmirror.ui.component
 
 import se.fivefactorial.magicmirror.ui.UISettings
+import se.fivefactorial.magicmirror.ui.component.support.Color
 import se.fivefactorial.magicmirror.ui.component.support.Margin
 import java.awt.Dimension
 import java.awt.Graphics2D
@@ -53,4 +54,8 @@ abstract class Component() {
         size.height - margin.top - margin.bottom,
         BufferedImage.TYPE_INT_ARGB
     )
+
+    protected fun Graphics2D.setColor(color: Color) {
+        this.color = java.awt.Color(color.red, color.green, color.blue, color.alpha)
+    }
 }

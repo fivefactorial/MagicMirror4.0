@@ -1,12 +1,10 @@
 package example
 
-import example.screen.ExampleScreen
-import se.fivefactorial.magicmirror.ui.MirrorUI
 import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.component.TextComponent
+import se.fivefactorial.magicmirror.ui.component.support.Color
 import java.awt.Dimension
 import java.awt.Graphics
-import java.awt.Graphics2D
 import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.Timer
@@ -19,7 +17,7 @@ internal fun main() {
     val settings = UISettings()
     settings.debug = true
 
-    val component = TextComponent()
+    val component = TextComponent({ "" + System.currentTimeMillis() }, Color(0, 0, 0))
     component.setup(settings)
     val panel by lazy {
         object : JPanel() {
@@ -32,7 +30,6 @@ internal fun main() {
     }
 
     frame.add(panel)
-
     frame.size = Dimension(300, 300)
 
     Timer(1000 / settings.fps) { panel.repaint() }.apply { start() }
