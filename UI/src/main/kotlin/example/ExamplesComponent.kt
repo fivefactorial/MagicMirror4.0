@@ -3,6 +3,7 @@ package example
 import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.component.TextComponent
 import se.fivefactorial.magicmirror.ui.component.support.Color
+import se.fivefactorial.magicmirror.ui.component.support.Margin
 import java.awt.Dimension
 import java.awt.Graphics
 import javax.swing.JFrame
@@ -19,6 +20,8 @@ internal fun main() {
 
     val component = TextComponent({ "" + System.currentTimeMillis() }, Color(0, 0, 0))
     component.setup(settings)
+    component.margin = Margin(30)
+
     val panel by lazy {
         object : JPanel() {
             override fun paint(g: Graphics) {

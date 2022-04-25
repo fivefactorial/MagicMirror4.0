@@ -12,4 +12,6 @@ data class Margin(
     companion object {
         val NO_MARGIN = Margin(0, 0, 0, 0)
     }
+
+    constructor(margin: Int) : this(margin, margin, margin, margin)
 }
