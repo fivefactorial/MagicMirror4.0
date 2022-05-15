@@ -1,6 +1,7 @@
 package example
 
 import se.fivefactorial.magicmirror.ui.UISettings
+import se.fivefactorial.magicmirror.ui.component.ComponentCollection
 import se.fivefactorial.magicmirror.ui.component.TextComponent
 import se.fivefactorial.magicmirror.ui.component.support.Color
 import se.fivefactorial.magicmirror.ui.component.support.Margin
@@ -18,9 +19,17 @@ internal fun main() {
     val settings = UISettings()
     settings.debug = true
 
-    val component = TextComponent({ "" + System.currentTimeMillis() }, Color(0, 0, 0))
-    component.setup(settings)
-    component.margin = Margin(30)
+    val text = TextComponent({ "" + System.currentTimeMillis() }, Color(0, 0, 0))
+    text.margin = Margin(30)
+
+    val text2 = TextComponent({ "" + System.currentTimeMillis() }, Color(255, 0, 0))
+    text2.margin = Margin(20)
+
+    val component = ComponentCollection().apply {
+        add(text)
+        add(text2)
+        setup(settings)
+    }
 
     val panel by lazy {
         object : JPanel() {
