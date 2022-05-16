@@ -3,6 +3,7 @@ package example
 import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.component.ComponentCollection
 import se.fivefactorial.magicmirror.ui.component.TextComponent
+import se.fivefactorial.magicmirror.ui.component.support.AbsolutePosition
 import se.fivefactorial.magicmirror.ui.component.support.Color
 import se.fivefactorial.magicmirror.ui.component.support.Margin
 import java.awt.Dimension
@@ -20,14 +21,14 @@ internal fun main() {
     settings.debug = true
 
     val text = TextComponent({ "" + System.currentTimeMillis() }, Color(0, 0, 0))
-    text.margin = Margin(30)
+    text.margin = Margin(0)
 
     val text2 = TextComponent({ "" + System.currentTimeMillis() }, Color(255, 0, 0))
-    text2.margin = Margin(20)
+    text2.margin = Margin(0)
 
     val component = ComponentCollection().apply {
         add(text)
-        add(text2)
+        add(text2, AbsolutePosition(30,30))
         setup(settings)
     }
 
