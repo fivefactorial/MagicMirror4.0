@@ -3,9 +3,10 @@ package example
 import se.fivefactorial.magicmirror.ui.UISettings
 import se.fivefactorial.magicmirror.ui.component.ComponentCollection
 import se.fivefactorial.magicmirror.ui.component.TextComponent
-import se.fivefactorial.magicmirror.ui.component.support.AbsolutePosition
+import se.fivefactorial.magicmirror.ui.component.support.position.AbsolutePosition
 import se.fivefactorial.magicmirror.ui.component.support.Color
 import se.fivefactorial.magicmirror.ui.component.support.Margin
+import se.fivefactorial.magicmirror.ui.component.support.size.AbsoluteSize
 import java.awt.Dimension
 import java.awt.Graphics
 import javax.swing.JFrame
@@ -28,7 +29,7 @@ internal fun main() {
 
     val component = ComponentCollection().apply {
         add(text)
-        add(text2, AbsolutePosition(30,30))
+        add(text2, AbsolutePosition(30,30), AbsoluteSize(50,75))
         setup(settings)
     }
 
