@@ -7,7 +7,6 @@ import java.awt.Dimension
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 
-
 /**
  * A drawable component.
  */
@@ -19,6 +18,7 @@ abstract class Component() {
     var margin: Margin = Margin.NO_MARGIN
     var preferredSize: Dimension? = null
         protected set
+
     protected val contentSize
         get() = Dimension(size.width - margin.left - margin.right, size.height - margin.top - margin.bottom)
 
